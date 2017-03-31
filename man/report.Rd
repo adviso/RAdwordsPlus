@@ -4,7 +4,7 @@
 \alias{report}
 \title{Retrieve an Adwords Report}
 \usage{
-report(cid, auth, report = "ACCOUNT_PERFORMANCE_REPORT",
+report(cid, auth, name = "ACCOUNT_PERFORMANCE_REPORT",
   fields = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost",
   "Date"), date = "LAST_14_DAYS", ...)
 }
@@ -13,7 +13,7 @@ report(cid, auth, report = "ACCOUNT_PERFORMANCE_REPORT",
 
 \item{auth}{Google AdWords authentification token.}
 
-\item{report}{Name of the report. Default to the account performance report ("ACCOUNT_PERFORMANCE_REPORT").}
+\item{name}{Name of the report. Default to the account performance report ("ACCOUNT_PERFORMANCE_REPORT").}
 
 \item{fields}{Metrics to select in the report. This can be a mix of attributes, segments and metrics. Default to "AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date".}
 
@@ -30,9 +30,9 @@ Downloads an Adwords report. Wrapper function around the \link[RAdwords]{stateme
 \examples{
 # Download the search query performance report for January 2015
 auth <- doAuth()
-report <- "SEARCH_QUERY_PERFORMANCE_REPORT"
+name <- "SEARCH_QUERY_PERFORMANCE_REPORT"
 fields <- c("AccountDescriptiveName", "AdGroupId", "AdGroupName", "AdGroupStatus", "CampaignId", "CampaignName", "CampaignStatus", "KeywordId", "KeywordTextMatchingQuery", "QueryMatchTypeWithVariant", "Impressions", "Clicks", "Conversions", "Cost", "AveragePosition")
 cid <- c('XXX-XXX-XXXX', 'YYY-YYY-YYYY')
-report <- adwords.report(cid, auth, report, fields, date = "LAST_14_DAYS")
+report <- adwords.report(cid, auth, name, fields, date = "LAST_14_DAYS")
 }
 
