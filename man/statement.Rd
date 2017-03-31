@@ -15,7 +15,7 @@ statement(report = "ACCOUNT_PERFORMANCE_REPORT",
 
 \item{date}{Either a date range (see \url{https://developers.google.com/adwords/api/docs/guides/reporting#date-ranges}) or a vector of length two with the date interval (start date first, end date last). Default to last fourteen days ("LAST_14_DAYS")}
 
-\item{where}{Conditions to use in the statement, like restrictions on a metric}
+\item{where}{Conditions to use in the statement, like restrictions on a field}
 }
 \value{
 A character string with the content of the query.
