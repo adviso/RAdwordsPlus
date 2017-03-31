@@ -20,7 +20,7 @@
 #' fields <- c("AccountDescriptiveName", "AdGroupId", "AdGroupName", "AdGroupStatus", "CampaignId", "CampaignName", "CampaignStatus", "KeywordId", "KeywordTextMatchingQuery", "QueryMatchTypeWithVariant", "Impressions", "Clicks", "Conversions", "Cost", "AveragePosition")
 #' cid <- c('XXX-XXX-XXXX', 'YYY-YYY-YYYY')
 #' report <- adwords.report(cid, auth, report, fields, date = "LAST_14_DAYS")
-adwords.report <- function(cid, auth, report = "ACCOUNT_PERFORMANCE_REPORT", fields = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date"), date = "LAST_14_DAYS", ...)
+report <- function(cid, auth, report = "ACCOUNT_PERFORMANCE_REPORT", fields = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date"), date = "LAST_14_DAYS", ...)
 {
 	if(!require(RAdwords)) stop("adwords.report requires package RAdwords, use install_github('jburkhardt/RAdwords')")
 	if(!require(data.table)) stop("adwords.report requires package data.table, use install.packages(data.table)")
