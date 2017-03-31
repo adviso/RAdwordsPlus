@@ -18,9 +18,9 @@ report.name <- function(report.file = "account-performance-report.csv")
 	report.name
 }
 
-adwords.reports.201609 <- data.frame(API = "201609", Report = report.type(adwords.reports.201609.files), Name = report.name(adwords.reports.201609.files), stringsAsFactors = FALSE)
-adwords.reports.201607 <- data.frame(API = "201607", Report = report.type(adwords.reports.201607.files), Name = report.name(adwords.reports.201607.files), stringsAsFactors = FALSE)
-adwords.reports.201605 <- data.frame(API = "201605", Report = report.type(adwords.reports.201605.files), Name = report.name(adwords.reports.201605.files), stringsAsFactors = FALSE)
+adwords.reports.201609 <- data.frame(API = "201609", Name = report.type(adwords.reports.201609.files), Display.Name = report.name(adwords.reports.201609.files), stringsAsFactors = FALSE)
+adwords.reports.201607 <- data.frame(API = "201607", Name = report.type(adwords.reports.201607.files), Display.Name = report.name(adwords.reports.201607.files), stringsAsFactors = FALSE)
+adwords.reports.201605 <- data.frame(API = "201605", Name = report.type(adwords.reports.201605.files), Display.Name = report.name(adwords.reports.201605.files), stringsAsFactors = FALSE)
 
 adwords.reports <- rbind(adwords.reports.201609, adwords.reports.201607, adwords.reports.201605)
 
