@@ -5,13 +5,13 @@
 \title{Prepare an Adwards Query Language Statement}
 \usage{
 statement(report = "ACCOUNT_PERFORMANCE_REPORT",
-  metrics = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost",
+  fields = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost",
   "Date"), date = "LAST_14_DAYS", where)
 }
 \arguments{
 \item{report}{Name of the report. Default to the account performance report ("ACCOUNT_PERFORMANCE_REPORT").}
 
-\item{metrics}{Metrics to select in the report. Default to}
+\item{fields}{Fields to select in the report. This can be a mix of attributes, segments and metrics. Default to "AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date".}
 
 \item{date}{Either a date range (see \url{https://developers.google.com/adwords/api/docs/guides/reporting#date-ranges}) or a vector of length two with the date interval (start date first, end date last). Default to last fourteen days ("LAST_14_DAYS")}
 
@@ -24,6 +24,6 @@ A character string with the content of the query.
 Builds an Adwards Query Language Statement.
 }
 \examples{
-statement(report = "ACCOUNT_PERFORMANCE_REPORT", metrics = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date"), date = "LAST_14_DAYS")
+statement(report = "ACCOUNT_PERFORMANCE_REPORT", fields = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date"), date = "LAST_14_DAYS")
 }
 

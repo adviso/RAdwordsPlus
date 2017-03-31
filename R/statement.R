@@ -3,7 +3,7 @@
 #' Builds an Adwards Query Language Statement.
 #'
 #' @param report Name of the report. Default to the account performance report ("ACCOUNT_PERFORMANCE_REPORT").
-#' @param metrics Metrics to select in the report. Default to
+#' @param fields Fields to select in the report. This can be a mix of attributes, segments and metrics. Default to "AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date".
 #' @param date Either a date range (see \url{https://developers.google.com/adwords/api/docs/guides/reporting#date-ranges}) or a vector of length two with the date interval (start date first, end date last). Default to last fourteen days ("LAST_14_DAYS")
 #' @param where Conditions to use in the statement, like restrictions on a metric
 #'
@@ -11,10 +11,10 @@
 #' @export
 #'
 #' @examples
-#' statement(report = "ACCOUNT_PERFORMANCE_REPORT", metrics = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date"), date = "LAST_14_DAYS")
-statement <- function(report = "ACCOUNT_PERFORMANCE_REPORT", metrics = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date"), date = "LAST_14_DAYS", where)
+#' statement(report = "ACCOUNT_PERFORMANCE_REPORT", fields = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date"), date = "LAST_14_DAYS")
+statement <- function(report = "ACCOUNT_PERFORMANCE_REPORT", fields = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date"), date = "LAST_14_DAYS", where)
 {
-	query <- paste0("__rdquery=SELECT+", paste(metrics, collapse = ","))
+	query <- paste0("__rdquery=SELECT+", paste(fields, collapse = ","))
 	query <- paste0(query, "+FROM+", report)
 
 	if(!missing(where))

@@ -5,7 +5,7 @@
 \title{Retrieve an Adwords Report}
 \usage{
 adwords.report(cid, auth, report = "ACCOUNT_PERFORMANCE_REPORT",
-  metrics = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost",
+  fields = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost",
   "Date"), date = "LAST_14_DAYS", ...)
 }
 \arguments{
@@ -15,7 +15,7 @@ adwords.report(cid, auth, report = "ACCOUNT_PERFORMANCE_REPORT",
 
 \item{report}{Name of the report. Default to the account performance report ("ACCOUNT_PERFORMANCE_REPORT").}
 
-\item{metrics}{Metrics to select in the report. Default to "AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date".}
+\item{fields}{Metrics to select in the report. This can be a mix of attributes, segments and metrics. Default to "AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date".}
 
 \item{date}{Either a date range (see \url{https://developers.google.com/adwords/api/docs/guides/reporting#date-ranges}) or a vector of length two with the date interval (start date first, end date last). Default to last fourteen days ("LAST_14_DAYS")}
 
@@ -31,8 +31,8 @@ Downloads an Adwords report. Wrapper function around the \link[RAdwords]{stateme
 # Download the search query performance report for January 2015
 auth <- doAuth()
 report <- "SEARCH_QUERY_PERFORMANCE_REPORT"
-select <- c("AccountDescriptiveName", "AdGroupId", "AdGroupName", "AdGroupStatus", "CampaignId", "CampaignName", "CampaignStatus", "KeywordId", "KeywordTextMatchingQuery", "QueryMatchTypeWithVariant", "Impressions", "Clicks", "Conversions", "Cost", "AveragePosition")
+fields <- c("AccountDescriptiveName", "AdGroupId", "AdGroupName", "AdGroupStatus", "CampaignId", "CampaignName", "CampaignStatus", "KeywordId", "KeywordTextMatchingQuery", "QueryMatchTypeWithVariant", "Impressions", "Clicks", "Conversions", "Cost", "AveragePosition")
 cid <- c('XXX-XXX-XXXX', 'YYY-YYY-YYYY')
-report <- adwords.report(cid, auth, report, metrics, date = "LAST_14_DAYS")
+report <- adwords.report(cid, auth, report, fields, date = "LAST_14_DAYS")
 }
 
