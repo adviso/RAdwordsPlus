@@ -26,8 +26,15 @@ report <- function(cid, auth, name = "ACCOUNT_PERFORMANCE_REPORT", fields = c("A
 	if(!require(data.table)) stop("adwords.report requires package data.table, use install.packages(data.table)")
 
 	query <- RAdwordsPlus::statement(report = name, fields = fields, date = date, ...)
-	clients.data <- lapply(cid, getData, google_auth = auth, statement = query)
-	data <- tryCatch({rbindlist(clients.data)}, error = function(e){print(clients.data); print(e)})
+	response <- lapply(cid, getData, google_auth = auth, statement = query)
+	error <- is.error(response)
+	if(any(error))
+	{
+		error.index <- which.max(error)
+		error.msg <- parse.error(response[[error.index]])
+		stop(error.msg)
+	}
+	data <- rbindlist(response)
 	data
 }
 
