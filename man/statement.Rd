@@ -13,7 +13,7 @@ statement(report = "ACCOUNT_PERFORMANCE_REPORT",
 
 \item{fields}{Fields to select in the report. This can be a mix of attributes, segments and metrics. Default to "AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date".}
 
-\item{date}{Either a date range (see \url{https://developers.google.com/adwords/api/docs/guides/reporting#date-ranges}) or a vector of length two with the date interval (start date first, end date last). Default to last fourteen days ("LAST_14_DAYS")}
+\item{date}{Either a date range (see \url{https://developers.google.com/adwords/api/docs/guides/reporting#date-ranges}) or a vector of length two with the date interval (start date first, end date last). Default to last fourteen days ("LAST_14_DAYS"). Note that this works only if no Date or Week columns are specified (see \url{https://developers.google.com/adwords/api/docs/guides/awql}).}
 
 \item{where}{Conditions to use in the statement, like restrictions on a field}
 }

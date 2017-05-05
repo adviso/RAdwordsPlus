@@ -17,7 +17,7 @@ report(cid, auth, name = "ACCOUNT_PERFORMANCE_REPORT",
 
 \item{fields}{Metrics to select in the report. This can be a mix of attributes, segments and metrics. Default to "AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date".}
 
-\item{date}{Either a date range (see \url{https://developers.google.com/adwords/api/docs/guides/reporting#date-ranges}) or a vector of length two with the date interval (start date first, end date last). Default to last fourteen days ("LAST_14_DAYS")}
+\item{date}{Either a date range (see \url{https://developers.google.com/adwords/api/docs/guides/reporting#date-ranges}) or a vector of length two with the date interval (start date first, end date last). Default to last fourteen days ("LAST_14_DAYS"). If NULL the during clause will be omitted, getting data for the whole time. Note that this works only if no Date or Week columns are specified (see \url{https://developers.google.com/adwords/api/docs/guides/awql}).}
 
 \item{...}{Extra parameters for the RAdwords::statement function}
 }
