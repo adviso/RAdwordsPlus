@@ -1,26 +1,21 @@
-adwords.reports.201609.files <- list.files(system.file(package = "RAdwords", "extdata/api201609/"))
-adwords.reports.201607.files <- list.files(system.file(package = "RAdwords", "extdata/api201607/"))
-adwords.reports.201605.files <- list.files(system.file(package = "RAdwords", "extdata/api201605/"))
-
-report.type <- function(report.file = "account-performance-report.csv")
+report.name <- function(report.file = "account-performance-report.csv")
 {
-	report.type <- sub(".csv", "", report.file)
-	report.type <- gsub("-", "_", report.type)
-	report.type <- toupper(report.type)
-	report.type
+	name <- sub(".csv", "", report.file)
+	name <- gsub("-", "_", name)
+	name <- toupper(name)
+	name
 }
 
-report.fields <- function(report.file)
+report.fields <- function(folder, file)
 {
-	report.path <- file.path(system.file(package = "RAdwords"), "extdata", "api201609", report.file)
+	report.path <- file.path(system.file(package = "RAdwords"), "extdata", folder, file)
 	report.fields <- read.csv(report.path, encoding = "UTF-8", stringsAsFactors = FALSE)
-	data.frame(Report = report.type(report.file), report.fields, stringsAsFactors = FALSE)
+	data.frame(API = gsub("api",  "", folder), Report = report.name(file), report.fields, stringsAsFactors = FALSE)
 }
 
-adwords.fields.201609 <- data.frame(API = "201609", do.call(rbind, lapply(adwords.reports.201609.files, report.fields)), stringsAsFactors = FALSE)
-adwords.fields.201607 <- data.frame(API = "201607", do.call(rbind, lapply(adwords.reports.201607.files, report.fields)), stringsAsFactors = FALSE)
-adwords.fields.201605 <- data.frame(API = "201605", do.call(rbind, lapply(adwords.reports.201605.files, report.fields)), stringsAsFactors = FALSE)
-
-adwords.fields <- rbind(adwords.fields.201609, adwords.fields.201607, adwords.fields.201605)
+folders <- list.files(system.file(package = "RAdwords", "extdata"))
+files <- lapply(folders, function(folder){list.files(system.file(package = "RAdwords", file.path("extdata", folder)))})
+adwords.fields <- do.call(rbind, mapply(function(folder, folder.files){do.call(rbind, lapply(folder.files, report.fields, folder = folder))}, folders, files, SIMPLIFY = FALSE))
+row.names(adwords.fields) <- NULL
 
 devtools::use_data(adwords.fields, overwrite = TRUE)

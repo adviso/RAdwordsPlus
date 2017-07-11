@@ -1,27 +1,22 @@
-adwords.reports.201609.files <- list.files(system.file(package = "RAdwords", "extdata/api201609/"))
-adwords.reports.201607.files <- list.files(system.file(package = "RAdwords", "extdata/api201607/"))
-adwords.reports.201605.files <- list.files(system.file(package = "RAdwords", "extdata/api201605/"))
-
-report.type <- function(report.file = "account-performance-report.csv")
-{
-	report.type <- sub(".csv", "", report.file)
-	report.type <- gsub("-", "_", report.type)
-	report.type <- toupper(report.type)
-	report.type
-}
-
 report.name <- function(report.file = "account-performance-report.csv")
 {
-	report.name <- sub(".csv", "", report.file)
-	report.name <- gsub("-", " ", report.name)
-	report.name <- gsub("(\\w)(\\w*)", "\\U\\1\\L\\2", report.name, perl = TRUE)
-	report.name
+	name <- sub(".csv", "", report.file)
+	name <- gsub("-", "_", name)
+	name <- toupper(name)
+	name
 }
 
-adwords.reports.201609 <- data.frame(API = "201609", Name = report.type(adwords.reports.201609.files), Display.Name = report.name(adwords.reports.201609.files), stringsAsFactors = FALSE)
-adwords.reports.201607 <- data.frame(API = "201607", Name = report.type(adwords.reports.201607.files), Display.Name = report.name(adwords.reports.201607.files), stringsAsFactors = FALSE)
-adwords.reports.201605 <- data.frame(API = "201605", Name = report.type(adwords.reports.201605.files), Display.Name = report.name(adwords.reports.201605.files), stringsAsFactors = FALSE)
+display.name <- function(report.file = "account-performance-report.csv")
+{
+	name <- sub(".csv", "", report.file)
+	name <- gsub("-", " ", name)
+	name <- gsub("(\\w)(\\w*)", "\\U\\1\\L\\2", name, perl = TRUE)
+	name
+}
 
-adwords.reports <- rbind(adwords.reports.201609, adwords.reports.201607, adwords.reports.201605)
+folders <- list.files(system.file(package = "RAdwords", "extdata"))
+files <- lapply(folders, function(folder){list.files(system.file(package = "RAdwords", file.path("extdata", folder)))})
+adwords.reports <- do.call(rbind, mapply(function(folder, file){data.frame(API = gsub("api", "", folder), Name = report.name(file), Display.Name = display.name(file))}, folders, files, SIMPLIFY = FALSE))
+row.names(adwords.reports) <- NULL
 
 devtools::use_data(adwords.reports, overwrite = TRUE)
