@@ -16,7 +16,7 @@ display.name <- function(report.file = "account-performance-report.csv")
 
 folders <- list.files(system.file(package = "RAdwords", "extdata"))
 files <- lapply(folders, function(folder){list.files(system.file(package = "RAdwords", file.path("extdata", folder)))})
-adwords.reports <- do.call(rbind, mapply(function(folder, file){data.frame(API = gsub("api", "", folder), Name = report.name(file), Display.Name = display.name(file))}, folders, files, SIMPLIFY = FALSE))
+adwords.reports <- do.call(rbind, mapply(function(folder, file){data.frame(API = gsub("api", "", folder), Name = report.name(file), Display.Name = display.name(file), stringsAsFactors = FALSE)}, folders, files, SIMPLIFY = FALSE))
 row.names(adwords.reports) <- NULL
 
 devtools::use_data(adwords.reports, overwrite = TRUE)
