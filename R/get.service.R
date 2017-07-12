@@ -39,7 +39,7 @@ get.service <- function(request, cid, auth, user.agent, api.version = "v201702",
 	dev.token <- auth$credentials$auth.developerToken
 
 	# Prepare the header for the service request
-	namespace.def <-c(tns = file.path("https://adwords.google.com/api/adwords/cm/", api.version))
+	namespace.def <-c(tns = paste0("https://adwords.google.com/api/adwords/cm/", api.version))
 	cid.node <- xmlNode(cid, name = "clientCustomerId", namespace = "tns", namespaceDefinitions = namespace.def)
 	dev.node <- xmlNode(dev.token, name = "developerToken", namespace = "tns", namespaceDefinitions = namespace.def)
 	agent.node <- xmlNode(user.agent, name = "userAgent", namespace = "tns", namespaceDefinitions = namespace.def)
@@ -60,6 +60,8 @@ get.service <- function(request, cid, auth, user.agent, api.version = "v201702",
 						  			   includeZeroImpressions = FALSE),
 						  postfields = full.request,
 						  verbose = verbose, ssl.verifypeer = TRUE)
-	class(response) <- c(attr(request, "return"), "character")
-	response
+	# class(response) <- c(attr(request, "return"), "character")
+	# response
+	parser <- attr(request, "parser")
+	parser(response)
 }
