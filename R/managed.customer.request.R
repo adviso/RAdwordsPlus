@@ -14,8 +14,9 @@
 #' @seealso get.service
 #'
 #' @examples
-#' not.z <- list(predicate("Name", "DOES_NOT_CONTAIN_IGNORE_CASE", "Z_"), predicate("Name", "DOES_NOT_CONTAIN_IGNORE_CASE", "Z-"), predicate("Name", "DOES_NOT_CONTAIN_IGNORE_CASE", "Z _"), predicate("Name", "DOES_NOT_CONTAIN_IGNORE_CASE", "Z -"))
-#' request <- managed.customer.request(fields = c("Name", "CustomerId"), predicates = not.z)
+#' # Prepare a request to get all account in a MCC that starts with "USA" and doesn't contain "inc".
+#' preds <- list(predicate("Name", "STARTS_IGNORE_CASE", "USA"), predicate("Name", "DOES_NOT_CONTAIN_IGNORE_CASE", "inc))
+#' request <- managed.customer.request(fields = c("Name", "CustomerId"), predicates = preds)
 managed.customer.request <- function(fields = c("Name", "CustomerId"), predicates = NULL, start.index = 0, number.of.results = 100)
 {
 	if(!require(XML)) stop("managed.customer.request requires package XML")
