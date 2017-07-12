@@ -2,13 +2,13 @@
 % Please edit documentation in R/get.service.R
 \name{get.service}
 \alias{get.service}
-\title{Adwords Managed Customer Service}
+\title{Call an Adwords Service}
 \usage{
 get.service(request, cid, auth, user.agent, api.version = "v201702",
   validate.only = FALSE, partial.failure = FALSE, verbose = FALSE)
 }
 \arguments{
-\item{request}{Node for the body of an XML encoded Adwords service request.}
+\item{request}{XMLNode for the body of an XML encoded Adwords service request.}
 
 \item{cid}{client customer id.}
 
@@ -25,11 +25,10 @@ get.service(request, cid, auth, user.agent, api.version = "v201702",
 \item{verbose}{TRUE to turn on the verbose mode of the \code{\link{getURL}} call. Default to FALSE.}
 }
 \value{
-The XML response as a managed.customer S3 object.
+The XML response for the service request.
 }
 \description{
-Sends a managed customer request to the Google Adwords Managed Customer service.
-\code{is.managed.customer} will test if an object is interpretable as a managed.customer.
+Sends a request for a Google Adwords service.
 }
 \examples{
 # For this exemple to work, you must supply a valid client customer id and your developper token

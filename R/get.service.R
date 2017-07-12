@@ -27,6 +27,7 @@ get.service <- function(request, cid, auth, user.agent, api.version = "v201702",
 
 	if(!"adwords.service.request" %in% class(request)) stop("argument request is not a valid Adwords service request")
 	service <- attr(request, "service")
+	path <- attr(request, "path")
 
 	access <- auth[["access"]]
 	if(as.numeric(Sys.time()) - 3600 >= access$timeStamp)
@@ -38,7 +39,7 @@ get.service <- function(request, cid, auth, user.agent, api.version = "v201702",
 	dev.token <- auth$credentials$auth.developerToken
 
 	# Prepare the header for the service request
-	namespace.def <-c(tns = paste0("https://adwords.google.com/api/adwords/cm/", api.version))
+	namespace.def <-c(tns = file.path("https://adwords.google.com/api/adwords/cm/", api.version))
 	cid.node <- xmlNode(cid, name = "clientCustomerId", namespace = "tns", namespaceDefinitions = namespace.def)
 	dev.node <- xmlNode(dev.token, name = "developerToken", namespace = "tns", namespaceDefinitions = namespace.def)
 	agent.node <- xmlNode(user.agent, name = "userAgent", namespace = "tns", namespaceDefinitions = namespace.def)
@@ -52,13 +53,13 @@ get.service <- function(request, cid, auth, user.agent, api.version = "v201702",
 	full.request <- saveXML(envelope.node)
 
 	# Retreive the service data
-	response <- RCurl::getURL(paste0("https://adwords.google.com/api/adwords/mcm/", api.version, "/", service, "?wsdl"),
+	response <- RCurl::getURL(paste0(path, api.version, "/", service, "?wsdl"),
 						  httpheader = c(Authorization = authorization,
 						  			   developerToken = credlist[["auth.developerToken"]],
 						  			   clientCustomerId = cid,
 						  			   includeZeroImpressions = FALSE),
 						  postfields = full.request,
 						  verbose = verbose, ssl.verifypeer = TRUE)
-	class(response) <- c(attr(request, "type"), "character")
+	class(response) <- c(attr(request, "return"), "character")
 	response
 }

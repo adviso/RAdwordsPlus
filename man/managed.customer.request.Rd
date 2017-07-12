@@ -17,15 +17,16 @@ managed.customer.request(fields = c("Name", "CustomerId"),
 \item{number.of.results}{Maximum number of results to return in this request. Default is 100.}
 }
 \value{
-A SOAP formatted managed customer request.
+An XML formatted managed customer request.
 }
 \description{
 Prepares the body of an XML formatted request for the Adwords managed customer service.
 Only data retrieval is implemented for now.
 }
 \examples{
-not.z <- list(predicate("Name", "DOES_NOT_CONTAIN_IGNORE_CASE", "Z_"), predicate("Name", "DOES_NOT_CONTAIN_IGNORE_CASE", "Z-"), predicate("Name", "DOES_NOT_CONTAIN_IGNORE_CASE", "Z _"), predicate("Name", "DOES_NOT_CONTAIN_IGNORE_CASE", "Z -"))
-request <- managed.customer.request(fields = c("Name", "CustomerId"), predicates = not.z)
+# Prepare a request to get all account in a MCC that starts with "USA" and doesn't contain "inc".
+preds <- list(predicate("Name", "STARTS_IGNORE_CASE", "USA"), predicate("Name", "DOES_NOT_CONTAIN_IGNORE_CASE", "inc"))
+request <- managed.customer.request(fields = c("Name", "CustomerId"), predicates = preds)
 }
 \seealso{
 get.service
