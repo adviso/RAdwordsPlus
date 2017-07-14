@@ -105,3 +105,124 @@ as.xml.related.to.url <- function(x)
 	include.sub.urls <- attr(x, "include.sub.urls")
 	c(lapply(x, xmlNode, name = "urls", namespace = "ns1"), list(xmlNode(name = "includeSubUrls", namespace = "ns1", as.xml(include.sub.urls))))
 }
+
+#' @rdname as.xml
+#' @export
+as.xml.keyword.estimate.request <- function(x)
+{
+	criterion.node <- xmlNode("Keyword", name = "Criterion.Type", namespace = "ns0")
+	text.node <- xmlNode(x, name = "text", namespace = "ns0")
+	match.node <- xmlNode(attr(x, "match.type"), name = "matchType", namespace = "ns0")
+
+	if(invalid(attr(x, "id")))
+	{
+		keyword.node <- xmlNode(name = "keyword", namespace = "ns1", criterion.node, text.node, match.node)
+	}
+	else
+	{
+		id.node <- xmlNode(attr(x, "id"), name = "id", namespace = "ns0")
+		keyword.node <- xmlNode(name = "keyword", namespace = "ns1", id.node, criterion.node, text.node, match.node)
+	}
+
+	if(!invalid(attr(x, "max.cpc")))
+	{
+		bid.node <- as.xml(attr(x, "max.cpc"))
+	}
+
+	if(!invalid(attr(x, "is.negative")))
+	{
+		negative.text <- ifelse(attr(x, "is.negative"), "true", "false")
+		negative.node <- xmlNode(negative.text, name = "isNegative", namespace = "ns1")
+	}
+
+	if(exists("bid.node"))
+	{
+		if(exists("negative.node"))
+		{
+			node <- xmlNode(name = "keywordEstimateRequests", namespace = "ns1", keyword.node, bid.node, negative.node)
+		}
+		else
+		{
+			node <- xmlNode(name = "keywordEstimateRequests", namespace = "ns1", keyword.node, bid.node)
+		}
+	}
+	else
+	{
+		if(exists("negative.node"))
+		{
+			node <- xmlNode(name = "keywordEstimateRequests", namespace = "ns1", keyword.node, negative.node)
+		}
+		else
+		{
+			node <- xmlNode(name = "keywordEstimateRequests", namespace = "ns1", keyword.node)
+		}
+	}
+
+	node
+}
+
+#' @rdname as.xml
+#' @export
+as.xml.adgroup.estimate.request <- function(x)
+{
+	node <- xmlNode(name = "adGroupEstimateRequests", namespace = "ns1")
+
+	if(!invalid(attr(x, "id")))
+	{
+		id.node <- xmlNode(attr(x, "id"), name = "adGroupId", namespace = "ns1")
+		node <- addChildren(node = node, kids = list(id.node))
+	}
+
+	if(!invalid(attr(x, "max.cpc")))
+	{
+		bid.node <- as.xml(attr(x, "max.cpc"))
+		node <- addChildren(node = node, kids = list(bid.node))
+	}
+
+	keyword.nodes <- lapply(x, as.xml)
+	node <- addChildren(node = node, kids = keyword.nodes)
+
+	node
+}
+
+#' @rdname as.xml
+#' @export
+as.xml.campaign.estimate.request <- function(x)
+{
+	node <- xmlNode(name = "campaignEstimateRequests", namespace = "ns1")
+
+	if(!invalid(attr(x, "id")))
+	{
+		id.node <- xmlNode(attr(x, "id"), name = "campaignId", namespace = "ns1")
+		node <- addChildren(node = node, kids = list(id.node))
+	}
+
+	adgroup.nodes <- lapply(x, as.xml)
+	node <- addChildren(node = node, kids = adgroup.nodes)
+
+	if(!invalid(attr(x, "criteria")))
+	{
+		criteria.nodes <- lapply(attr(x, "criteria"), as.xml)
+		node <- addChildren(node = node, kids = criteria.nodes)
+	}
+
+	node
+}
+
+#' @rdname as.xml
+#' @export
+as.xml.max.cpc <- function(amount)
+{
+	money.node <- xmlNode("Money", name = "ComparableValue.Type", namespace = "ns0")
+	amount.node <- xmlNode(format(amount, scientific = FALSE), name = "microAmount", namespace = "ns0")
+	xmlNode(name = "maxCpc", namespace = "ns1", money.node, amount.node)
+}
+
+#' @rdname as.xml
+#' @export
+as.xml.criterion <- function(criterion)
+{
+	id.node <- xmlNode(criterion, name = "id", namespace = "ns0")
+	type.node <- xmlNode(attr(criterion, "type"), name = "Criterion.Type", namespace = "ns0")
+	xmlNode(name = "criteria", namespace = "ns1", attrs = c("xsi:type" = paste0("ns0:", attr(criterion, "type"))), id.node, type.node)
+}
