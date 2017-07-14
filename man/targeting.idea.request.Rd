@@ -29,7 +29,7 @@ An XML formatted trageting idea request.
 Prepares the body of an XML formatted request for the Adwords targeting idea service.
 }
 \examples{
-request <- targeting.idea.request(cid = cid, dev.token = dev.token, user.agent = user.agent, search.parameters = list(related.to.query("Mercury", "Venus", "Mars"), language(1000, 1002), network()))
+request <- targeting.idea.request(search.parameters = list(related.to.query("Mercury", "Venus", "Mars"), language(1000, 1002), network()))
 }
 \seealso{
 get.service
