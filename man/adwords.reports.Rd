@@ -9,7 +9,8 @@
 adwords.reports
 }
 \description{
-A table containing all the Adwords reports for the 201609, 201607 and 201605 API versions.
+A table containing all the Adwords reports for the 201702, 201609 and 201607 API versions.
+This data is extracted from the files in the RAdwords package.
 }
 \keyword{Adwords}
 \keyword{Report}
