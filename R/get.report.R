@@ -12,7 +12,8 @@
 #'
 #' @return The report as a data.table with the selected columns.
 #' @export
-#' @import RAdwords data.table
+#' @import RAdwords
+#' @importFrom data.table rbindlist
 #'
 #' @examples
 #' # Download the search query performance report for January 2015
