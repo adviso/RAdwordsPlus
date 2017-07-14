@@ -47,6 +47,6 @@ managed.customer.request <- function(fields = c("Name", "CustomerId"), predicate
 	class(body.node) <- c(class(body.node), "adwords.service.request")
 	attr(body.node, "service") <- "ManagedCustomerService"
 	attr(body.node, "path") <- "https://adwords.google.com/api/adwords/mcm/"
-	attr(body.node, "parser") <- dissect.managed.customer
+	attr(body.node, "parser") <- parse.managed.customer
 	body.node
 }

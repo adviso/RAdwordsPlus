@@ -3,9 +3,15 @@
 \name{as.xml}
 \alias{as.xml}
 \alias{as.xml.NULL}
+\alias{as.xml.language}
 \alias{as.xml.list}
+\alias{as.xml.location}
 \alias{as.xml.logical}
+\alias{as.xml.network}
 \alias{as.xml.predicate}
+\alias{as.xml.related.to.query}
+\alias{as.xml.related.to.url}
+\alias{as.xml.search.parameter}
 \title{XML Encoding for Adwords Service Requests}
 \usage{
 as.xml(x)
@@ -17,6 +23,18 @@ as.xml(x)
 \method{as.xml}{logical}(x)
 
 \method{as.xml}{predicate}(x)
+
+\method{as.xml}{search.parameter}(x)
+
+\method{as.xml}{language}(x)
+
+\method{as.xml}{location}(x)
+
+\method{as.xml}{network}(x)
+
+\method{as.xml}{related.to.query}(x)
+
+\method{as.xml}{related.to.url}(x)
 }
 \arguments{
 \item{x}{Data to convert to XML.}

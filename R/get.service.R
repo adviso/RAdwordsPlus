@@ -49,7 +49,7 @@ get.service <- function(request, cid, auth, user.agent, api.version = "v201702",
 	header.node <- xmlNode(name = "Header", namespace = "SOAP-ENV", request.node)
 
 	# Finalize the request by combining the header and the body
-	envelope.node <- xmlNode("Envelope", namespace = "SOAP-ENV", namespaceDefinitions = c(tns = paste0("https://adwords.google.com/api/adwords/mcm/", api.version), ns0 = paste0("https://adwords.google.com/api/adwords/cm/", api.version), ns1 = paste0("https://adwords.google.com/api/adwords/mcm/", api.version), ns2 = "http://schemas.xmlsoap.org/soap/envelope/", xsi = "http://www.w3.org/2001/XMLSchema-instance", 'SOAP-ENV' = "http://schemas.xmlsoap.org/soap/envelope/"), header.node, request)
+	envelope.node <- xmlNode("Envelope", namespace = "SOAP-ENV", namespaceDefinitions = c(tns = paste0(path, api.version), ns0 = paste0("https://adwords.google.com/api/adwords/cm/", api.version), ns1 = paste0(path, api.version), ns2 = "http://schemas.xmlsoap.org/soap/envelope/", xsi = "http://www.w3.org/2001/XMLSchema-instance", 'SOAP-ENV' = "http://schemas.xmlsoap.org/soap/envelope/"), header.node, request)
 	full.request <- saveXML(envelope.node)
 
 	# Retreive the service data
@@ -60,8 +60,6 @@ get.service <- function(request, cid, auth, user.agent, api.version = "v201702",
 						  			   includeZeroImpressions = FALSE),
 						  postfields = full.request,
 						  verbose = verbose, ssl.verifypeer = TRUE)
-	# class(response) <- c(attr(request, "return"), "character")
-	# response
 	parser <- attr(request, "parser")
 	parser(response)
 }

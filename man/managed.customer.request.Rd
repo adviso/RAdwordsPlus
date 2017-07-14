@@ -25,7 +25,7 @@ Only data retrieval is implemented for now.
 }
 \examples{
 # Prepare a request to get all account in a MCC that starts with "USA" and doesn't contain "inc".
-preds <- list(predicate("Name", "STARTS_IGNORE_CASE", "USA"), predicate("Name", "DOES_NOT_CONTAIN_IGNORE_CASE", "inc"))
+preds <- list(predicate("Name", "STARTS_WITH_IGNORE_CASE", "USA"), predicate("Name", "DOES_NOT_CONTAIN_IGNORE_CASE", "inc"))
 request <- managed.customer.request(fields = c("Name", "CustomerId"), predicates = preds)
 }
 \seealso{
