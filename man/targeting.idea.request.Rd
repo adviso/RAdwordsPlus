@@ -23,7 +23,7 @@ targeting.idea.request(search.parameters, idea.type = "KEYWORD",
 \item{number.of.results}{Maximum number of results to return in this request. Default is 700 (the maximum allowed).}
 }
 \value{
-An XML formatted trageting idea request.
+An XML formatted targeting idea request.
 }
 \description{
 Prepares the body of an XML formatted request for the Adwords targeting idea service.

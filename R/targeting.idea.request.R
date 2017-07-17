@@ -9,7 +9,7 @@
 #' @param start.index Index of the first result to return with this request. Default is 0.
 #' @param number.of.results Maximum number of results to return in this request. Default is 700 (the maximum allowed).
 #'
-#' @return An XML formatted trageting idea request.
+#' @return An XML formatted targeting idea request.
 #' @export
 #' @import XML
 #' @seealso get.service
