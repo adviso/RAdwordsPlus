@@ -4,15 +4,17 @@
 \alias{customer.sync.request}
 \title{Adwords Customer Sync Request}
 \usage{
-customer.sync.request(campaign.ids, min.date.time = NULL,
+customer.sync.request(campaign.ids, feed.ids = NULL, min.date.time = NULL,
   max.date.time = NULL)
 }
 \arguments{
-\item{campaign.ids}{Vector or list of campaign ids.}
+\item{campaign.ids}{Vector or list of campaign ids for which we want the changes.}
 
 \item{min.date.time}{The min date time of the range for the changes in yyyyMMdd HHmmss <Timezone ID> format. Default to system time if NULL.}
 
 \item{max.date.time}{The min date time of the range for the changes in yyyyMMdd HHmmss <Timezone ID> format. Default to system time if NULL.}
+
+\item{campaign.ids}{Vector or list of feed ids for which we want the changes.}
 }
 \value{
 An XML formatted customer sync request.

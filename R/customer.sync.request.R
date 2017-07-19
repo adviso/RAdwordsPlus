@@ -2,7 +2,8 @@
 #'
 #' Prepares the body of an XML formatted request for the Adwords customer sync service.
 #'
-#' @param campaign.ids Vector or list of campaign ids.
+#' @param campaign.ids Vector or list of campaign ids for which we want the changes.
+#' @param campaign.ids Vector or list of feed ids for which we want the changes.
 #' @param min.date.time The min date time of the range for the changes in yyyyMMdd HHmmss <Timezone ID> format. Default to system time if NULL.
 #' @param max.date.time The min date time of the range for the changes in yyyyMMdd HHmmss <Timezone ID> format. Default to system time if NULL.
 #'
@@ -13,7 +14,7 @@
 #'
 #' @examples
 #' request <- customer.sync.request(campaign.ids = c("123456789", "456789123", "789123456"))
-customer.sync.request <- function(campaign.ids, min.date.time = NULL, max.date.time = NULL)
+customer.sync.request <- function(campaign.ids, feed.ids = NULL, min.date.time = NULL, max.date.time = NULL)
 {
 	if(!require(XML)) stop("customer.sync.request requires package XML")
 
@@ -33,7 +34,9 @@ customer.sync.request <- function(campaign.ids, min.date.time = NULL, max.date.t
 
 	campaign.nodes <- lapply(campaign.ids, xmlNode, name = "campaignIds", namespace = "ns2")
 
-	selector.node <- xmlNode(name = "selector", namespace = "ns1", .children = c(list(range.node), campaign.nodes))
+	feed.nodes <- lapply(feed.ids, xmlNode, name = "feedIds", namespace = "ns2")
+
+	selector.node <- xmlNode(name = "selector", namespace = "ns1", .children = c(list(range.node), campaign.nodes, feed.nodes))
 
 	get.node <- xmlNode(name = "get", namespace = "ns1", selector.node)
 	body.node <- xmlNode(name = "Body", namespace = "ns2", get.node)
