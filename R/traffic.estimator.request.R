@@ -40,7 +40,7 @@ traffic.estimator.request <- function(cer, cid, dev.token, user.agent, api.versi
 	class(body.node) <- c(class(body.node), "adwords.service.request", "traffic.estimator.request")
 	attr(body.node, "service") <- "TrafficEstimatorService"
 	attr(body.node, "path") <- "https://adwords.google.com/api/adwords/o/"
-	attr(body.node, "parser") <- parse.traffic.estimator
+	attr(body.node, "parser") <- traffic.estimator.parser
 	body.node
 }
 

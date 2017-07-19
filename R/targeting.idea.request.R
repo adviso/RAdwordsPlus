@@ -40,6 +40,6 @@ targeting.idea.request <- function(search.parameters, idea.type = "KEYWORD", req
 	class(body.node) <- c(class(body.node), "adwords.service.request")
 	attr(body.node, "service") <- "TargetingIdeaService"
 	attr(body.node, "path") <- "https://adwords.google.com/api/adwords/o/"
-	attr(body.node, "parser") <- parse.targeting.idea
+	attr(body.node, "parser") <- targeting.idea.parser
 	body.node
 }

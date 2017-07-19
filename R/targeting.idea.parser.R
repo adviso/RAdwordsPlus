@@ -11,9 +11,9 @@
 #' @examples
 #' # For this exemple to work, you must supply a valid client customer id and your developper token
 #' TODO
-parse.targeting.idea <- function(x, ...)
+targeting.idea.parser <- function(x, ...)
 {
-	if(!require(xml2)) stop("parse.targeting.idea requires package xml2")
+	if(!require(xml2)) stop("targeting.idea.parser requires package xml2")
 
 	doc <- read_xml(x)
 	xml_ns_strip(doc)
@@ -27,30 +27,30 @@ parse.targeting.idea <- function(x, ...)
 	}
 	else
 	{
-		results <- lapply(entry.nodes, parse.targeting.idea.entry)
+		results <- lapply(entry.nodes, targeting.idea.entry.parser)
 		result <- do.call(rbind, results)
 		attr(result, "total.number.of.entries") <- total
 		result
 	}
 }
 
-#' @rdname parse.targeting.idea
+#' @rdname targeting.idea.parser
 #' @export
-parse.targeting.idea.entry <- function(entry.node)
+targeting.idea.entry.parser <- function(entry.node)
 {
-	if(xml_name(entry.node) != "entries") stop("parse.targeting.idea.entry only accepts entries nodes")
+	if(xml_name(entry.node) != "entries") stop("targeting.idea.entry.parser only accepts entries nodes")
 
 	data.nodes <- xml_find_all(entry.node, "data", xml_ns(entry.node))
-	results <- lapply(data.nodes, parse.targeting.idea.data)
+	results <- lapply(data.nodes, targeting.idea.data.parser)
 	result <- data.frame(results)
 	result
 }
 
-#' @rdname parse.targeting.idea
+#' @rdname targeting.idea.parser
 #' @export
-parse.targeting.idea.data <- function(data.node)
+targeting.idea.data.parser <- function(data.node)
 {
-	if(xml_name(data.node) != "data") stop("parse.targeting.idea.data only accepts data nodes")
+	if(xml_name(data.node) != "data") stop("targeting.idea.data.parser only accepts data nodes")
 
 	key <- xml_text(xml_find_first(data.node, "key", xml_ns(data.node)))
 	value.node <- xml_find_first(data.node, "value", xml_ns(data.node))

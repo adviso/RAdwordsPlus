@@ -11,9 +11,9 @@
 #' @examples
 #' # For this exemple to work, you must supply a valid client customer id and your developper token
 #' TODO
-parse.managed.customer <- function(x, ...)
+managed.customer.parser <- function(x, ...)
 {
-	if(!require(xml2)) stop("parse.managed.customer requires package xml2")
+	if(!require(xml2)) stop("managed.customer.parser requires package xml2")
 
 	doc <- read_xml(x)
 	xml_ns_strip(doc)
@@ -27,22 +27,22 @@ parse.managed.customer <- function(x, ...)
 	}
 	else
 	{
-		entries <- lapply(entry.nodes, parse.managed.customer.entry)
+		entries <- lapply(entry.nodes, managed.customer.entry.parser)
 		do.call(rbind, entries)
 	}
 
 	link.nodes <- xml_find_all(doc, ".//ns2:links", xml_ns(doc))
-	links <- lapply(link.nodes, parse.managed.customer.link)
+	links <- lapply(link.nodes, managed.customer.link.parser)
 	link.df <- do.call(rbind, links)
 
 	list(Entries = entry.df, Links = link.df)
 }
 
-#' @rdname parse.managed.customer
+#' @rdname .customer.parser
 #' @export
-parse.managed.customer.entry <- function(entry.node)
+managed.customer.entry.parser <- function(entry.node)
 {
-	if(xml_name(entry.node) != "entries") stop("parse.managed.customer.entry only accepts entries nodes")
+	if(xml_name(entry.node) != "entries") stop("managed.customer.entry.parser only accepts entries nodes")
 
 	field.nodes <- xml_children(entry.node)
 	name <- lapply(field.nodes, xml_name)
@@ -52,11 +52,11 @@ parse.managed.customer.entry <- function(entry.node)
 	result
 }
 
-#' @rdname parse.managed.customer
+#' @rdname managed.customer.parser
 #' @export
-parse.managed.customer.link <- function(entry.node)
+managed.customer.link.parser <- function(entry.node)
 {
-	if(xml_name(entry.node) != "links") stop("parse.managed.customer.link only accepts entries nodes")
+	if(xml_name(entry.node) != "links") stop("managed.customer.link.parser only accepts entries nodes")
 
 	field.nodes <- xml_children(entry.node)
 	name <- lapply(field.nodes, xml_name)

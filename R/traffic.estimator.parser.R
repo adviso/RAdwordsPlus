@@ -26,10 +26,10 @@
 #' parse(request)
 #'
 #' # Parse the estimate to get the results
-#' parse.traffic.estimator(estimate)
-parse.traffic.estimator <- function(x, ...)
+#' traffic.estimator.parser(estimate)
+traffic.estimator.parser <- function(x, ...)
 {
-	if(!require(xml2)) stop("parse.traffic.estimator requires package xml2")
+	if(!require(xml2)) stop("traffic.estimator.parser requires package xml2")
 
 	doc <- read_xml(x)
 	xml_ns_strip(doc)
@@ -42,49 +42,49 @@ parse.traffic.estimator <- function(x, ...)
 	}
 	else
 	{
-		campaign.results <- mapply(parse.campaign.estimate, campaign.estimates, paste0("#", default.id = 1:length(campaign.estimates)), SIMPLIFY = FALSE)
+		campaign.results <- mapply(campaign.estimate.parser, campaign.estimates, paste0("#", default.id = 1:length(campaign.estimates)), SIMPLIFY = FALSE)
 		do.call(rbind, campaign.results)
 	}
 }
 
-#' @rdname parse.traffic.estimator
+#' @rdname traffic.estimator.parser
 #' @export
-parse.campaign.estimate <- function(node, default.id = NULL)
+campaign.estimate.parser <- function(node, default.id = NULL)
 {
-	if(!require(xml2)) stop("parse.campaign.estimate requires package xml2")
-	if(xml_name(node) != "campaignEstimates") stop("parse.campaign.estimate only accepts campaignEstimates nodes")
+	if(!require(xml2)) stop("campaign.estimate.parser requires package xml2")
+	if(xml_name(node) != "campaignEstimates") stop("campaign.estimate.parser only accepts campaignEstimates nodes")
 
 	node.id <- xml_text(xml_find_first(node, ".//campaignId", xml_ns(node)))
 	campaign.id <- if(is.null(node.id) | is.na(node.id)) default.id else node.id
 
 	adgroup.estimates <- xml_find_all(node, ".//adGroupEstimates", xml_ns(node))
-	adgroup.results <- mapply(parse.adgroup.estimate, adgroup.estimates, default.id = paste0("#", 1:length(adgroup.estimates)), SIMPLIFY = FALSE)
+	adgroup.results <- mapply(adgroup.estimate.parser, adgroup.estimates, default.id = paste0("#", 1:length(adgroup.estimates)), SIMPLIFY = FALSE)
 
 	data.frame(CampaignID = campaign.id, do.call(rbind, adgroup.results), stringsAsFactors = FALSE)
 }
 
-#' @rdname parse.traffic.estimator
+#' @rdname traffic.estimator.parser
 #' @export
-parse.adgroup.estimate <- function(node, default.id = NULL)
+adgroup.estimate.parser <- function(node, default.id = NULL)
 {
-	if(!require(xml2)) stop("parse.adgroup.estimate requires package xml2")
-	if(xml_name(node) != "adGroupEstimates") stop("parse.adgroup.estimate only accepts adGroupEstimates nodes")
+	if(!require(xml2)) stop("adgroup.estimate.parser requires package xml2")
+	if(xml_name(node) != "adGroupEstimates") stop("adgroup.estimate.parser only accepts adGroupEstimates nodes")
 
 	node.id <- xml_text(xml_find_first(node, ".//adGroupId", xml_ns(node)))
 	adgroup.id <- if(is.null(node.id) | is.na(node.id)) default.id else node.id
 
 	keyword.estimates <- xml_find_all(node, ".//keywordEstimates", xml_ns(node))
-	keyword.results <- mapply(parse.keyword.estimate, keyword.estimates, default.id = paste0("#", 1:length(keyword.estimates)), SIMPLIFY = FALSE)
+	keyword.results <- mapply(keyword.estimate.parser, keyword.estimates, default.id = paste0("#", 1:length(keyword.estimates)), SIMPLIFY = FALSE)
 
 	data.frame(AdgroupID = adgroup.id, do.call(rbind, keyword.results), stringsAsFactors = FALSE)
 }
 
-#' @rdname parse.traffic.estimator
+#' @rdname traffic.estimator.parser
 #' @export
-parse.keyword.estimate <- function(node, default.id = NULL)
+keyword.estimate.parser <- function(node, default.id = NULL)
 {
-	if(!require(xml2)) stop("parse.keyword.estimate requires package xml2")
-	if(xml_name(node) != "keywordEstimates") stop("parse.keyword.estimate only accepts keywordEstimates nodes")
+	if(!require(xml2)) stop("keyword.estimate.parser requires package xml2")
+	if(xml_name(node) != "keywordEstimates") stop("keyword.estimate.parser only accepts keywordEstimates nodes")
 
 	node.id <- xml_text(xml_find_first(node, ".//criterionId", xml_ns(node)))
 	keyword.id <- if(is.null(node.id) | is.na(node.id)) default.id else node.id
