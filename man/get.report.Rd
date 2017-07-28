@@ -4,16 +4,15 @@
 \alias{get.report}
 \title{Retrieve an Adwords Report}
 \usage{
-get.report(cid, auth, name = "ACCOUNT_PERFORMANCE_REPORT",
-  fields = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost",
-  "Date"), date = "LAST_14_DAYS", ...)
+get.report(report, cid, auth, fields = c("AccountDescriptiveName",
+  "Impressions", "Clicks", "Cost", "Date"), date = "LAST_14_DAYS", ...)
 }
 \arguments{
-\item{cid}{Customer client ids (or vector of).}
+\item{report}{Name of the report. The list of reports can be found at \url{https://developers.google.com/adwords/api/docs/appendix/reports}.}
+
+\item{cid}{Customer client ids (or vector of). If more than one CID is provided, the results will be concatenated.}
 
 \item{auth}{Google AdWords authentification token.}
-
-\item{name}{Name of the report. Default to the account performance report ("ACCOUNT_PERFORMANCE_REPORT").}
 
 \item{fields}{Metrics to select in the report. This can be a mix of attributes, segments and metrics. Default to "AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date".}
 
@@ -29,11 +28,12 @@ Downloads an Adwords report. Wrapper function around the \link[RAdwords]{stateme
 Allows for some additional feature with the dates.
 }
 \examples{
-# Download the search query performance report for January 2015
-auth <- doAuth()
-name <- "SEARCH_QUERY_PERFORMANCE_REPORT"
-fields <- c("AccountDescriptiveName", "AdGroupId", "AdGroupName", "AdGroupStatus", "CampaignId", "CampaignName", "CampaignStatus", "KeywordId", "KeywordTextMatchingQuery", "QueryMatchTypeWithVariant", "Impressions", "Clicks", "Conversions", "Cost", "AveragePosition")
+# Download the search query performance report for the last 14 days.
+library(RAdwords)
+report <- "SEARCH_QUERY_PERFORMANCE_REPORT"
 cid <- c('XXX-XXX-XXXX', 'YYY-YYY-YYYY')
-report <- get.report(cid, auth, name, fields, date = "LAST_14_DAYS")
+auth <- doAuth()
+fields <- c("AccountDescriptiveName", "AdGroupId", "AdGroupName", "AdGroupStatus", "CampaignId", "CampaignName", "CampaignStatus", "KeywordId", "KeywordTextMatchingQuery", "QueryMatchTypeWithVariant", "Impressions", "Clicks", "Conversions", "Cost", "AveragePosition")
+report <- get.report(report, cid, auth, fields, date = "LAST_14_DAYS")
 }
 
