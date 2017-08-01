@@ -5,8 +5,7 @@
 \alias{traffic.estimator.request}
 \title{Adwords Traffic Estimator Request}
 \usage{
-traffic.estimator.request(cer, cid, dev.token, user.agent,
-  api.version = "v201702", validate.only = FALSE, partial.failure = FALSE)
+traffic.estimator.request(cer)
 
 is.traffic.estimator.request(x)
 }
@@ -21,11 +20,10 @@ Encodes a \code{\link{campaign.estimate.request}} into a an XML formatted reques
 \code{is.traffic.estimator.request} will test if an object is interpretable as a traffic.estimator.request.
 }
 \examples{
-# For this exemple to work, you must supply a valid client customer id and your developper token
 k <- keyword(c("Example", "Test"), match.type = c("EXACT", "PHRASE"))
 ker <- keyword.estimate.request(k, max.cpc = c(1500000, 2250000))
 aer <- adgroup.estimate.request(ker)
 cer <- campaign.estimate.request(aer, campaign.id = "123456789")
-request <- traffic.estimator.request(cer, cid = "YOUR_CID", dev.token = "YOUR_DEV_TOKEN", user.agent = "AKTE Exemple")
+request <- traffic.estimator.request(cer)
 }
 
