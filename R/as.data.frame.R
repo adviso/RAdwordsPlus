@@ -2,6 +2,10 @@
 as.data.frame.adgroup.estimate.request <- function(x, ...)
 {
 	m <- apply(t(sapply(x, as.list)), 2, unlist)
+	if(!is.matrix(m))
+	{
+		m <- as.list(m)
+	}
 	id <- attr(x, "id")
 	if(is.null(id)) id <- NA
 	max.cpc <- attr(x, "max.cpc")
