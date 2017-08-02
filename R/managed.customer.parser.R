@@ -38,7 +38,7 @@ managed.customer.parser <- function(x, ...)
 	list(Entries = entry.df, Links = link.df)
 }
 
-#' @rdname .customer.parser
+#' @rdname managed.customer.parser
 #' @export
 managed.customer.entry.parser <- function(entry.node)
 {
