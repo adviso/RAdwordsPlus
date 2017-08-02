@@ -30,13 +30,13 @@ get.report <- function(report, cid, auth, fields = c("AccountDescriptiveName", "
 
 	query <- RAdwordsPlus::statement(report = report, fields = fields, date = date, ...)
 	response <- lapply(cid, getData, google_auth = auth, statement = query)
-	error <- is.error(response)
-	if(any(error))
+
+	errors <- sapply(response, check.report)
+	if(any(!sapply(errors, is.null)))
 	{
-		error.index <- which.max(error)
-		error.msg <- parse.error(response[[error.index]])
-		stop(error.msg)
+		stop(errors[!sapply(errors, is.null)][[1]])
 	}
+
 	data <- rbindlist(response)
 	data
 }

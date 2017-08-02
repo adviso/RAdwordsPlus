@@ -60,6 +60,10 @@ get.service <- function(request, cid, auth, user.agent, api.version = "v201702",
 						  			   includeZeroImpressions = FALSE),
 						  postfields = full.request,
 						  verbose = verbose, ssl.verifypeer = TRUE)
+
+	error <- check.service(response)
+	if(!is.null(error)) stop(error)
+
 	parser <- attr(request, "parser")
 	parser(response)
 }
