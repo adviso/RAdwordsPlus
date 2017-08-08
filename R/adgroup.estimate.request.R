@@ -37,6 +37,13 @@ adgroup.estimate.request <- function(ker, adgroup.id = NULL, max.cpc = NULL)
 	{
 		stop("argument ker must contains keyword.estimate.request objects")
 	}
+	duplicates <- duplicated(as.character(ker))
+	if(any(duplicates))
+	{
+		count <- sum(duplicates)
+		warning(paste(count, "duplicated", ifelse(count == 1, "keyword", "keywords"), "removed from adgroup.estimate.request"))
+		ker <- ker[!duplicates]
+	}
 
 	x <- if(is.keyword.estimate.request(ker)) list(ker) else ker
 	class(x) <- "adgroup.estimate.request"
