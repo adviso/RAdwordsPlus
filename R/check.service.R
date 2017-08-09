@@ -20,9 +20,9 @@ check.service <- function(x)
 	doc <- read_xml(x)
 	xml_ns_strip(doc)
 
-	if(!is.na(xml_find_first(doc, "/faultcode", xml_ns(doc))))
+	if(!is.na(xml_find_first(doc, ".//faultcode", xml_ns(doc))))
 	{
-		message <- xml_text(xml_find_first(doc, "/faultstring", xml_ns(doc)))
+		message <- xml_text(xml_find_first(doc, ".//faultstring", xml_ns(doc)))
 		return(message)
 	}
 
