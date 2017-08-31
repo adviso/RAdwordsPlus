@@ -1,12 +1,15 @@
 Package: RAdwordsPlus
 Type: Package
-Title: What the Package Does (Title Case)
+Title: RAdwords Plus
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Nicolas Scott
+Maintainer: Nicolas Scott <nscott@adviso.ca>
+Description: RAdwordsPlus is an extension to the RAdwords package by Johannes Burkhardt.
+    The main feature of RAdwordsPlus is an API to connect to some of the RAdwords services.
+    Currently only part of the Managed Customer, Targeting Idea and Traffic Estimator are availables.
+    There's also a simplified version of the reporting API of RAdwords.
+    RAdwords can be found on CRAN and at http://jburkhardt.github.io/RAdwords.
+License: GNU GPLv3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 5.0.1
