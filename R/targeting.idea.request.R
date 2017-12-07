@@ -4,7 +4,7 @@
 #'
 #' @param search.parameters Search rules applied for the targeting ideas. If empty metadata will be collected with default parameters.
 #' @param idea.type Limits the request to responses of this idea type. Default to "KEYWORD", the only possibility.
-#' @param request.type Specify the request type. Can be either "IDEAS" (the default) of "STATS".
+#' @param request.type Specify the request type. Can be either "IDEAS" (the default) or "STATS".
 #' @param requested.attribute.types Request Attributes and associated data for this set of Types.
 #' @param start.index Index of the first result to return with this request. Default is 0.
 #' @param number.of.results Maximum number of results to return in this request. Default is 700 (the maximum allowed).
