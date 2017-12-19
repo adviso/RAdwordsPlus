@@ -31,4 +31,3 @@ request <- managed.customer.request(fields = c("Name", "CustomerId"), predicates
 \seealso{
 get.service
 }
-

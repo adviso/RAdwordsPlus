@@ -20,4 +20,3 @@ See \url{https://developers.google.com/adwords/api/docs/reference/v201702/Target
 # Queries for some planets
 related.to.query("Mercury", "Venus", "Mars")
 }
-

@@ -52,4 +52,3 @@ aer3 <- as.adgroup.estimate.request("Convert", is.negative = TRUE, match.type = 
 # Checking an adgroup.estimate.request
 is.adgroup.estimate.request(aer3)
 }
-

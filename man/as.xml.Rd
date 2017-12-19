@@ -3,20 +3,20 @@
 \name{as.xml}
 \alias{as.xml}
 \alias{as.xml.NULL}
-\alias{as.xml.adgroup.estimate.request}
-\alias{as.xml.campaign.estimate.request}
-\alias{as.xml.criterion}
-\alias{as.xml.keyword.estimate.request}
-\alias{as.xml.language}
 \alias{as.xml.list}
-\alias{as.xml.location}
 \alias{as.xml.logical}
-\alias{as.xml.max.cpc}
-\alias{as.xml.network}
 \alias{as.xml.predicate}
+\alias{as.xml.search.parameter}
+\alias{as.xml.language}
+\alias{as.xml.location}
+\alias{as.xml.network}
 \alias{as.xml.related.to.query}
 \alias{as.xml.related.to.url}
-\alias{as.xml.search.parameter}
+\alias{as.xml.keyword.estimate.request}
+\alias{as.xml.adgroup.estimate.request}
+\alias{as.xml.campaign.estimate.request}
+\alias{as.xml.max.cpc}
+\alias{as.xml.criterion}
 \title{XML Encoding for Adwords Service Requests}
 \usage{
 as.xml(x)
@@ -64,4 +64,3 @@ Allow the conversion of the data to a SOAP message for the Adwords service.
 \examples{
 TODO
 }
-

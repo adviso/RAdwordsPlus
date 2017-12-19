@@ -26,4 +26,3 @@ Builds an Adwards Query Language Statement.
 \examples{
 statement(report = "ACCOUNT_PERFORMANCE_REPORT", fields = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date"), date = "LAST_14_DAYS")
 }
-

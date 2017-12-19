@@ -18,4 +18,3 @@ This data is extracted from the files in the RAdwords package.
 \keyword{Metric}
 \keyword{Segment}
 \keyword{datasets}
-

@@ -34,4 +34,3 @@ request <- targeting.idea.request(search.parameters = list(related.to.query("Mer
 \seealso{
 get.service
 }
-

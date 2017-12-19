@@ -20,4 +20,3 @@ See \url{https://developers.google.com/adwords/api/docs/reference/v201702/Target
 # English and French
 language(1000, 1002)
 }
-

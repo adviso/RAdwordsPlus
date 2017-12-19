@@ -20,4 +20,3 @@ See \url{https://developers.google.com/adwords/api/docs/reference/v201702/Target
 # USA and Canada
 location(2840, 2124)
 }
-

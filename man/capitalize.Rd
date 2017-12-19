@@ -23,4 +23,3 @@ capitalize("capital")
 \seealso{
 \link{parse}
 }
-

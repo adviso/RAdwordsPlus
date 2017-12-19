@@ -23,4 +23,3 @@ Read \url{https://developers.google.com/adwords/api/docs/reference/v201705/AdGro
 \examples{
 predicate(field = "CustomerId", operator = "EQUALS", values = "123-456-7890")
 }
-

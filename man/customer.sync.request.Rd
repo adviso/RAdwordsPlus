@@ -28,4 +28,3 @@ request <- customer.sync.request(campaign.ids = c("123456789", "456789123", "789
 \seealso{
 get.service
 }
-

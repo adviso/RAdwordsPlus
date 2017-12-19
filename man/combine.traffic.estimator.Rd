@@ -31,4 +31,3 @@ request <- traffic.estimator.request(cer)
 estimate <- get.service(request, cid = "YOUR_CID", auth = doAuth(), cid = "YOUR_CID", dev.token = "YOUR_DEV_TOKEN", user.agent = "AKTE Exemple")
 combine.traffic.estimator(cer, estimate)
 }
-

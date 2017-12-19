@@ -23,4 +23,3 @@ TODO
 \seealso{
 get.service
 }
-

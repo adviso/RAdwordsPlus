@@ -15,4 +15,3 @@ This data is extracted from the files in the RAdwords package.
 \keyword{Adwords}
 \keyword{Report}
 \keyword{datasets}
-

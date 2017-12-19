@@ -36,4 +36,3 @@ auth <- doAuth()
 fields <- c("AccountDescriptiveName", "AdGroupId", "AdGroupName", "AdGroupStatus", "CampaignId", "CampaignName", "CampaignStatus", "KeywordId", "KeywordTextMatchingQuery", "QueryMatchTypeWithVariant", "Impressions", "Clicks", "Conversions", "Cost", "AveragePosition")
 report <- get.report(report, cid, auth, fields, date = "LAST_14_DAYS")
 }
-

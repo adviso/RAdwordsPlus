@@ -37,4 +37,3 @@ data <- get.service(request, cid = cid, auth = doAuth(), user.agent = user.agent
 \seealso{
 \code{\link{managed.customer.request}}
 }
-

@@ -30,4 +30,3 @@ report <- get.report(report, cid, auth, fields, date = "LAST_14_DAYS")
 \seealso{
 get.report
 }
-

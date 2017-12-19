@@ -27,4 +27,3 @@ See \url{https://developers.google.com/adwords/api/docs/reference/v201702/Target
 # Default network settings
 network()
 }
-
