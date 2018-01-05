@@ -20,16 +20,16 @@ customer.sync.request <- function(campaign.ids, feed.ids = NULL, min.date.time =
 
 	if(is.null(min.date.time))
 	{
-		min.date.time <- format(Sys.time(), "%Y%m%d %H%M%S")
+		min.date.time <- Sys.time() - 24*60*60
 	}
 
 	if(is.null(max.date.time))
 	{
-		max.date.time <- format(Sys.time(), "%Y%m%d %H%M%S")
+		max.date.time <- Sys.time()
 	}
 
-	min.node <- xmlNode(min.date.time, name = "min", namespace = "ns0")
-	max.node <- xmlNode(max.date.time, name = "max", namespace = "ns0")
+	min.node <- xmlNode(format(min.date.time, "%Y%m%d %H%M%S"), name = "min", namespace = "ns0")
+	max.node <- xmlNode(format(max.date.time, "%Y%m%d %H%M%S"), name = "max", namespace = "ns0")
 	range.node <- xmlNode(date.time.range[1], name = "dateTimeRange", namespace = "ns2", .children = list(min.node, max.node))
 
 	campaign.nodes <- lapply(campaign.ids, xmlNode, name = "campaignIds", namespace = "ns2")
