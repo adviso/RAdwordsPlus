@@ -48,39 +48,38 @@ changed.campaigns.parser <- function(node)
 	changed.adgroups.df <- do.call(rbind, changed.adgroups)
 
 	changes <- data.frame()
-
-	added.campaign.criteria <- xml_text(xml_find_all(node, ".//ns2:addedCampaignCriteria", xml_ns(node)))
-	if(length(added.campaign.criteria) > 0)
-	{
-		changes <- rbind(changes, data.frame(Modification = "CAMPAIGN_CRITERIA_ADDED", Id = added.campaign.criteria, stringsAsFactors = FALSE))
-	}
-
-	removed.campaign.criteria <- xml_text(xml_find_all(node, ".//ns2:removedCampaignCriteria", xml_ns(node)))
-	if(length(removed.campaign.criteria) > 0)
-	{
-		changes <- rbind(changes, data.frame(Modification = "CAMPAIGN_CRITERIA_REMOVED", Id = removed.campaign.criteria, stringsAsFactors = FALSE))
-	}
-
-	changed.feeds <- xml_text(xml_find_all(node, ".//ns2:changedFeeds", xml_ns(node)))
-	if(length(changed.feeds) > 0)
-	{
-		changes <- rbind(changes, data.frame(Modification = "CAMPAIGN_FEED_CHANGED", Id = changed.feeds, stringsAsFactors = FALSE))
-	}
-
-	removed.feeds <- xml_text(xml_find_all(node, ".//ns2:removedFeeds", xml_ns(node)))
-	if(length(removed.feeds) > 0)
-	{
-		changes <- rbind(changes, data.frame(Modification = "CAMPAIGN_FEED_REMOVED", Id = removed.feeds, stringsAsFactors = FALSE))
-	}
-
 	if(!is.null(changed.adgroups.df))
 	{
-		changes <- rbind(changed.adgroups.df, data.frame(AdgroupID = NA, AdgroupStatus = NA, changes, stringsAsFactors = FALSE))
+		changes <- rbind(changes, changed.adgroups.df)
 	}
 
-	if(is.null(changes))
+	added.campaign.criteria <- xml_text(xml_find_all(node, "./ns2:addedCampaignCriteria", xml_ns(node)))
+	if(length(added.campaign.criteria) > 0)
 	{
-		data.frame(CampaignID = id, CampaignStatus = status, stringsAsFactors = FALSE)
+		changes <- rbind(changes, data.frame(AdgroupID = NA, AdgroupStatus = NA, Modification = "CAMPAIGN_CRITERIA_ADDED", Id = added.campaign.criteria, stringsAsFactors = FALSE))
+	}
+
+	removed.campaign.criteria <- xml_text(xml_find_all(node, "./ns2:removedCampaignCriteria", xml_ns(node)))
+	if(length(removed.campaign.criteria) > 0)
+	{
+		changes <- rbind(changes, data.frame(AdgroupID = NA, AdgroupStatus = NA, Modification = "CAMPAIGN_CRITERIA_REMOVED", Id = removed.campaign.criteria, stringsAsFactors = FALSE))
+	}
+
+	changed.feeds <- xml_text(xml_find_all(node, "./ns2:changedFeeds", xml_ns(node)))
+	if(length(changed.feeds) > 0)
+	{
+		changes <- rbind(changes, data.frame(AdgroupID = NA, AdgroupStatus = NA, Modification = "CAMPAIGN_FEED_CHANGED", Id = changed.feeds, stringsAsFactors = FALSE))
+	}
+
+	removed.feeds <- xml_text(xml_find_all(node, "./ns2:removedFeeds", xml_ns(node)))
+	if(length(removed.feeds) > 0)
+	{
+		changes <- rbind(changes, data.frame(AdgroupID = NA, AdgroupStatus = NA, Modification = "CAMPAIGN_FEED_REMOVED", Id = removed.feeds, stringsAsFactors = FALSE))
+	}
+
+	if(nrow(changes) == 0)
+	{
+		data.frame(CampaignID = id, CampaignStatus = status, AdgroupID = NA, AdgroupStatus = NA, Modification = NA, Id = NA, stringsAsFactors = FALSE)
 	}
 	else
 	{
@@ -141,9 +140,9 @@ changed.adgroups.parser <- function(node)
 		changes <- rbind(changes, data.frame(Modification = "ADGROUP_BID_MODIFER_REMOVED", Id = removed.bid, stringsAsFactors = FALSE))
 	}
 
-	if(is.null(changes))
+	if(nrow(changes) == 0)
 	{
-		data.frame(AdgroupID = id, AdgroupStatus = status, stringsAsFactors = FALSE)
+		data.frame(AdgroupID = id, AdgroupStatus = status, Modification = NA, Id = NA, stringsAsFactors = FALSE)
 	}
 	else
 	{
