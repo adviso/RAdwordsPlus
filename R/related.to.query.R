@@ -13,7 +13,7 @@
 #' related.to.query("Mercury", "Venus", "Mars")
 related.to.query <- function(...)
 {
-	x <- list(...)
+	x <- as.list(c(...))
 	class(x) <- c("search.parameter", "related.to.query")
 	attr(x, "rule") <- "RelatedToQuerySearchParameter"
 	x
