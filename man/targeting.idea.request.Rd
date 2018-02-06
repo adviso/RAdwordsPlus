@@ -14,7 +14,7 @@ targeting.idea.request(search.parameters, idea.type = "KEYWORD",
 
 \item{idea.type}{Limits the request to responses of this idea type. Default to "KEYWORD", the only possibility.}
 
-\item{request.type}{Specify the request type. Can be either "IDEAS" (the default) of "STATS".}
+\item{request.type}{Specify the request type. Can be either "IDEAS" (the default) or "STATS".}
 
 \item{requested.attribute.types}{Request Attributes and associated data for this set of Types.}
 

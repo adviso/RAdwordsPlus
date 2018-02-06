@@ -10,6 +10,7 @@
 #' @param validate.only Test the API call without actually executing the call against real data. Default to FALSE.
 #' @param partial.failure If true service will carry out the operations that had no errors. Default to FALSE.
 #' @param verbose TRUE to turn on the verbose mode of the \code{\link{getURL}} call. Default to FALSE.
+#' @param raw TRUE to return the raw XML response. Default to FALSE.
 #'
 #' @return The XML response for the service request.
 #' @export
@@ -19,7 +20,7 @@
 #' @examples
 #' # For this exemple to work, you must supply a valid client customer id and your developper token
 #' data <- get.service(request, cid = cid, auth = doAuth(), user.agent = user.agent)
-get.service <- function(request, cid, auth, user.agent, api.version = "v201702", validate.only = FALSE, partial.failure = FALSE, verbose = FALSE)
+get.service <- function(request, cid, auth, user.agent, api.version = "v201702", validate.only = FALSE, partial.failure = FALSE, verbose = FALSE, raw = FALSE)
 {
 	if(!require(RAdwords)) stop("get.service requires package RAdwords")
 	if(!require(XML)) stop("get.service requires package XML")
@@ -64,6 +65,13 @@ get.service <- function(request, cid, auth, user.agent, api.version = "v201702",
 	error <- check.service(response)
 	if(!is.null(error)) stop(error)
 
-	parser <- attr(request, "parser")
-	parser(response)
+	if(raw)
+	{
+		response
+	}
+	else
+	{
+		parser <- attr(request, "parser")
+		parser(response)
+	}
 }

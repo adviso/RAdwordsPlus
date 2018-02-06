@@ -5,7 +5,8 @@
 \title{Call an Adwords Service}
 \usage{
 get.service(request, cid, auth, user.agent, api.version = "v201702",
-  validate.only = FALSE, partial.failure = FALSE, verbose = FALSE)
+  validate.only = FALSE, partial.failure = FALSE, verbose = FALSE,
+  raw = FALSE)
 }
 \arguments{
 \item{request}{XMLNode for the body of an XML encoded Adwords service request.}
@@ -23,6 +24,8 @@ get.service(request, cid, auth, user.agent, api.version = "v201702",
 \item{partial.failure}{If true service will carry out the operations that had no errors. Default to FALSE.}
 
 \item{verbose}{TRUE to turn on the verbose mode of the \code{\link{getURL}} call. Default to FALSE.}
+
+\item{raw}{TRUE to return the raw XML response. Default to FALSE.}
 }
 \value{
 The XML response for the service request.
