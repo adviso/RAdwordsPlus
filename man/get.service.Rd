@@ -4,7 +4,7 @@
 \alias{get.service}
 \title{Call an Adwords Service}
 \usage{
-get.service(request, cid, auth, user.agent, api.version = "v201702",
+get.service(request, cid, auth, user.agent, api.version = "v201710",
   validate.only = FALSE, partial.failure = FALSE, verbose = FALSE,
   raw = FALSE)
 }
@@ -17,7 +17,7 @@ get.service(request, cid, auth, user.agent, api.version = "v201702",
 
 \item{user.agent}{User agent string for your script, read \url{http://googleadsdeveloper.blogspot.ca/2013/11/please-set-user-agent-or-application.html} for more information.}
 
-\item{api.version}{version of the Adwords API to use, must be the same as in the request. Default to version v201702.}
+\item{api.version}{version of the Adwords API to use, must be the same as in the request. Default to version v201710.}
 
 \item{validate.only}{Test the API call without actually executing the call against real data. Default to FALSE.}
 

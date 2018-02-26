@@ -14,7 +14,7 @@ An S3 search parameter object.
 }
 \description{
 Related to query search parameters for a targeting idea.
-See \url{https://developers.google.com/adwords/api/docs/reference/v201702/TargetingIdeaService.RelatedToQuerySearchParameter}.
+See \url{https://developers.google.com/adwords/api/docs/reference/v201710/TargetingIdeaService.RelatedToQuerySearchParameter}.
 }
 \examples{
 # Queries for some planets

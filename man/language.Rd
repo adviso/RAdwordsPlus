@@ -14,7 +14,7 @@ An S3 search parameter object.
 }
 \description{
 Language search parameters for a targeting idea.
-See \url{https://developers.google.com/adwords/api/docs/reference/v201702/TargetingIdeaService.LanguageSearchParameter}.
+See \url{https://developers.google.com/adwords/api/docs/reference/v201710/TargetingIdeaService.LanguageSearchParameter}.
 }
 \examples{
 # English and French

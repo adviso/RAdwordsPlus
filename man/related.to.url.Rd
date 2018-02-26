@@ -16,7 +16,7 @@ An S3 search parameter object.
 }
 \description{
 Related to URL search parameters for a targeting idea.
-See \url{https://developers.google.com/adwords/api/docs/reference/v201702/TargetingIdeaService.RelatedToUrlSearchParameter}.
+See \url{https://developers.google.com/adwords/api/docs/reference/v201710/TargetingIdeaService.RelatedToUrlSearchParameter}.
 }
 \examples{
 # Queries for some planets
