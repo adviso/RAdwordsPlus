@@ -1,7 +1,7 @@
 #' Related to Query Search Parameter
 #'
 #' Related to query search parameters for a targeting idea.
-#' See \url{https://developers.google.com/adwords/api/docs/reference/v201702/TargetingIdeaService.RelatedToQuerySearchParameter}.
+#' See \url{https://developers.google.com/adwords/api/docs/reference/v201710/TargetingIdeaService.RelatedToQuerySearchParameter}.
 #'
 #' @param ... One or more keywords.
 #'

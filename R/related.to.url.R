@@ -1,7 +1,7 @@
 #' Related to URL Search Parameter
 #'
 #' Related to URL search parameters for a targeting idea.
-#' See \url{https://developers.google.com/adwords/api/docs/reference/v201702/TargetingIdeaService.RelatedToUrlSearchParameter}.
+#' See \url{https://developers.google.com/adwords/api/docs/reference/v201710/TargetingIdeaService.RelatedToUrlSearchParameter}.
 #'
 #' @param ... One or more language id.
 #' @param ... One or more language id.

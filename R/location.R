@@ -1,7 +1,7 @@
 #' Location Search Parameter
 #'
 #' Location search parameters for a targeting idea.
-#' See \url{https://developers.google.com/adwords/api/docs/reference/v201702/TargetingIdeaService.LocationSearchParameter}.
+#' See \url{https://developers.google.com/adwords/api/docs/reference/v201710/TargetingIdeaService.LocationSearchParameter}.
 #'
 #' @param ... One or more location id.
 #'
