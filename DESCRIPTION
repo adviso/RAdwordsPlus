@@ -17,4 +17,6 @@ Imports: XML,
     xml2,
     data.table,
     gtools,
-    reshape2
+    reshape2,
+    curl,
+    RAdwords

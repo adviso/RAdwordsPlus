@@ -1,5 +1,7 @@
+devtools::use_package("curl")
 devtools::use_package("data.table")
 devtools::use_package("gtools")
 devtools::use_package("reshape2")
+devtools::use_package("RAdwords")
 devtools::use_package("XML")
 devtools::use_package("xml2")
