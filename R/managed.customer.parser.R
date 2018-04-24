@@ -48,6 +48,11 @@ managed.customer.entry.parser <- function(entry.node)
 	name <- lapply(field.nodes, xml_name)
 	value <- lapply(field.nodes, xml_text)
 	result <- data.frame(value, stringsAsFactors = FALSE)
+	if(!"name" %in% name) # Then this is an express account.
+	{
+		name <- c("name", name)
+		result <- c(result[1], result)
+	}
 	names(result) <- name
 	result
 }
