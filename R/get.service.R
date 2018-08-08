@@ -6,7 +6,7 @@
 #' @param cid client customer id.
 #' @param auth Google authentification made with \code{\link{doAuth}}.
 #' @param user.agent User agent string for your script, read \url{http://googleadsdeveloper.blogspot.ca/2013/11/please-set-user-agent-or-application.html} for more information.
-#' @param api.version version of the Adwords API to use, must be the same as in the request. Default to version v201806.
+#' @param api.version Version of the Adwords API to use, must be the same as in the request. Default to version v201806.
 #' @param validate.only Test the API call without actually executing the call against real data. Default to FALSE.
 #' @param partial.failure If true service will carry out the operations that had no errors. Default to FALSE.
 #' @param verbose TRUE to turn on the verbose mode of the \code{\link{getURL}} call. Default to FALSE.
