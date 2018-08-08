@@ -4,8 +4,9 @@
 \alias{get.report}
 \title{Retrieve an Adwords Report}
 \usage{
-get.report(report, cid, auth, fields = c("AccountDescriptiveName",
-  "Impressions", "Clicks", "Cost", "Date"), date = "LAST_14_DAYS", ...)
+get.report(report, cid, auth, api.version = "201806",
+  fields = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost",
+  "Date"), date = "LAST_14_DAYS", ...)
 }
 \arguments{
 \item{report}{Name of the report. The list of reports can be found at \url{https://developers.google.com/adwords/api/docs/appendix/reports}.}
@@ -13,6 +14,8 @@ get.report(report, cid, auth, fields = c("AccountDescriptiveName",
 \item{cid}{Customer client ids (or vector of). If more than one CID is provided, the results will be concatenated.}
 
 \item{auth}{Google AdWords authentification token.}
+
+\item{api.version}{Version of the Adwords API to use, must be the same as in the request. Default to version 201806.}
 
 \item{fields}{Metrics to select in the report. This can be a mix of attributes, segments and metrics. Default to "AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date".}
 
