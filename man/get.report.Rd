@@ -4,7 +4,7 @@
 \alias{get.report}
 \title{Retrieve an Adwords Report}
 \usage{
-get.report(report, cid, auth, api.version = "201806",
+get.report(report, cid, auth, api.version = "latest",
   fields = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost",
   "Date"), date = "LAST_14_DAYS", ...)
 }
@@ -15,7 +15,7 @@ get.report(report, cid, auth, api.version = "201806",
 
 \item{auth}{Google AdWords authentification token.}
 
-\item{api.version}{Version of the Adwords API to use, must be the same as in the request. Default to version 201806.}
+\item{api.version}{Version of the Adwords API to use, must be the same as in the request. If set to "latest" (the default), the latest version in the package is used.}
 
 \item{fields}{Metrics to select in the report. This can be a mix of attributes, segments and metrics. Default to "AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date".}
 

@@ -6,7 +6,7 @@
 #' @param report Name of the report. The list of reports can be found at \url{https://developers.google.com/adwords/api/docs/appendix/reports}.
 #' @param cid Customer client ids (or vector of). If more than one CID is provided, the results will be concatenated.
 #' @param auth Google AdWords authentification token.
-#' @param api.version Version of the Adwords API to use, must be the same as in the request. Default to version 201806.
+#' @param api.version Version of the Adwords API to use, must be the same as in the request. If set to "latest" (the default), the latest version in the package is used.
 #' @param fields Metrics to select in the report. This can be a mix of attributes, segments and metrics. Default to "AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date".
 #' @param date Either a date range (see \url{https://developers.google.com/adwords/api/docs/guides/reporting#date-ranges}) or a vector of length two with the date interval (start date first, end date last). Default to last fourteen days ("LAST_14_DAYS"). If NULL the during clause will be omitted, getting data for the whole time. Note that this works only if no Date or Week columns are specified (see \url{https://developers.google.com/adwords/api/docs/guides/awql}).
 #' @param ... Extra parameters for the RAdwords::statement function
@@ -24,10 +24,12 @@
 #' auth <- doAuth()
 #' fields <- c("AccountDescriptiveName", "AdGroupId", "AdGroupName", "AdGroupStatus", "CampaignId", "CampaignName", "CampaignStatus", "KeywordId", "KeywordTextMatchingQuery", "QueryMatchTypeWithVariant", "Impressions", "Clicks", "Conversions", "Cost", "AveragePosition")
 #' report <- get.report(report, cid, auth, fields, date = "LAST_14_DAYS")
-get.report <- function(report, cid, auth, api.version = "201806", fields = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date"), date = "LAST_14_DAYS", ...)
+get.report <- function(report, cid, auth, api.version = "latest", fields = c("AccountDescriptiveName", "Impressions", "Clicks", "Cost", "Date"), date = "LAST_14_DAYS", ...)
 {
 	if(!require(RAdwords)) stop("adwords.report requires package RAdwords, use install_github('jburkhardt/RAdwords')")
 	if(!require(data.table)) stop("adwords.report requires package data.table, use install.packages(data.table)")
+
+	if(api.version == "latest") api.version = max(adwords.reports$API)
 
 	query <- RAdwordsPlus::statement(report = report, fields = fields, date = date, ...)
 	response <- lapply(cid, getData, google_auth = auth, statement = query, apiVersion = api.version)
