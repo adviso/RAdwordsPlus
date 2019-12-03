@@ -1,7 +1,7 @@
 Package: RAdwordsPlus
 Type: Package
 Title: RAdwords Plus
-Version: 0.1.0
+Version: 0.1.1
 Author: Nicolas Scott
 Maintainer: Nicolas Scott <nscott@adviso.ca>
 Description: RAdwordsPlus is an extension to the RAdwords package by Johannes Burkhardt.
@@ -9,14 +9,15 @@ Description: RAdwordsPlus is an extension to the RAdwords package by Johannes Bu
     Currently only part of the Managed Customer, Targeting Idea and Traffic Estimator are availables.
     There's also a simplified version of the reporting API of RAdwords.
     RAdwords can be found on CRAN and at http://jburkhardt.github.io/RAdwords.
+Depends: R (>= 3.6.0)
 License: GNU GPLv3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.1
 Imports: XML,
     xml2,
     data.table,
-    gtools,
+    gtools (>= 3.8),
     reshape2,
-    curl,
-    RAdwords
+    curl (>= 4.2),
+    RAdwords (>= 0.1.18)
