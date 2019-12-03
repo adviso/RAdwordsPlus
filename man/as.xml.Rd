@@ -10,6 +10,7 @@
 \alias{as.xml.language}
 \alias{as.xml.location}
 \alias{as.xml.network}
+\alias{as.xml.category.products.and.services}
 \alias{as.xml.related.to.query}
 \alias{as.xml.related.to.url}
 \alias{as.xml.keyword.estimate.request}
@@ -36,6 +37,8 @@ as.xml(x)
 \method{as.xml}{location}(x)
 
 \method{as.xml}{network}(x)
+
+\method{as.xml}{category.products.and.services}(x)
 
 \method{as.xml}{related.to.query}(x)
 
