@@ -12,8 +12,8 @@ adgroup.estimate.request(ker, adgroup.id = NULL, max.cpc = NULL)
 
 as.adgroup.estimate.request(x, ...)
 
-\method{as.adgroup.estimate.request}{data.frame}(x, adgroup.id, campaign.id,
-  ...)
+\method{as.adgroup.estimate.request}{data.frame}(x, adgroup.id,
+  campaign.id, ...)
 
 \method{as.adgroup.estimate.request}{default}(x, ...)
 

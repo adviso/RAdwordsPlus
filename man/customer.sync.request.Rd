@@ -4,8 +4,8 @@
 \alias{customer.sync.request}
 \title{Adwords Customer Sync Request}
 \usage{
-customer.sync.request(campaign.ids, feed.ids = NULL, min.date.time = NULL,
-  max.date.time = NULL)
+customer.sync.request(campaign.ids, feed.ids = NULL,
+  min.date.time = NULL, max.date.time = NULL)
 }
 \arguments{
 \item{campaign.ids}{Vector or list of campaign ids for which we want the changes.}

@@ -5,7 +5,8 @@
 \title{Network Search Parameter}
 \usage{
 network(target.google.search = TRUE, target.search.network = FALSE,
-  target.content.network = FALSE, target.partner.content.network = FALSE)
+  target.content.network = FALSE,
+  target.partner.content.network = FALSE)
 }
 \arguments{
 \item{target.google.search}{Logical. If true, ads will be served with Google.com search results.}

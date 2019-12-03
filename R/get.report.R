@@ -43,4 +43,3 @@ get.report <- function(report, cid, auth, api.version = "latest", fields = c("Ac
 	data <- rbindlist(response)
 	data
 }
-

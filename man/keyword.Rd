@@ -8,7 +8,8 @@
 \alias{is.keyword}
 \title{Adwords Keyword}
 \usage{
-keyword(text, match.type = "BROAD", keyword.id = NULL, type = "Keyword")
+keyword(text, match.type = "BROAD", keyword.id = NULL,
+  type = "Keyword")
 
 as.keyword(x, ...)
 

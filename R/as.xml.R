@@ -93,6 +93,13 @@ as.xml.network <- function(x)
 
 #' @rdname as.xml
 #' @export
+as.xml.category.products.and.services <- function(x)
+{
+	lapply(x, xmlNode, name = "queries", namespace = "ns1")
+}
+
+#' @rdname as.xml
+#' @export
 as.xml.related.to.query <- function(x)
 {
 	lapply(x, xmlNode, name = "queries", namespace = "ns1")
